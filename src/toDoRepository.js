@@ -2,6 +2,15 @@ const toDoRepository = ( () =>{
     let catalog = {};
 
 
+        const setLocalStorage = () => {
+            localStorage.setItem('catalog', JSON.stringify(catalog));
+        }
+        const addFromLocalStorage = () => {
+                catalog = JSON.parse(localStorage.getItem('catalog'));  
+                console.log(catalog);        
+            }
+
+
     const addToDo = (addedToDo, project) => {
         if (project in catalog) {
             catalog[project].push(Object.values(addedToDo));   
@@ -22,10 +31,13 @@ const toDoRepository = ( () =>{
         for (const pro in catalog) {
             if (catalog[pro].length == 0) {
                 delete catalog[pro];
+
             }
         } 
     }
-    return { addToDo, removeToDo, catalog, clearProject };
+    return { addToDo, removeToDo, clearProject , setLocalStorage, addFromLocalStorage , get catalog(){
+        return catalog;
+    }};
 
 })();
 

@@ -94,8 +94,22 @@ form.addEventListener('submit', (e)=> {
 
 
 //initial default project:
-const initialNote = new ToDo('Title Area', '25-10-2022', 'High', 'Description Area' , 'Default');
-toDoRepository.addToDo(initialNote, initialNote.project);
-projectInput.value = `${initialNote.project}`
-displayController.renderToDo(initialNote.project);
-displayController.renderProject()
+
+if (localStorage.getItem('catalog') == null || localStorage.getItem('catalog').length == 2){
+    const initialNote = new ToDo('Title Area', '25-10-2022', 'High', 'Description Area' , 'Default');
+    toDoRepository.addToDo(initialNote, initialNote.project);
+    projectInput.value = `${initialNote.project}`;
+    displayController.renderToDo(initialNote.project);
+    displayController.renderProject()} 
+else {
+    console.log(localStorage.getItem('catalog').length)
+    toDoRepository.addFromLocalStorage()   
+    displayController.renderToDo(Object.keys(toDoRepository.catalog)[0]);
+    displayController.renderProject();
+    localStorage.removeItem('catalog');
+}
+const saveButton = document.querySelector('#save-button');
+
+saveButton.addEventListener('click', () => {
+    toDoRepository.setLocalStorage();
+});
