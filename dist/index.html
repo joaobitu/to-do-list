@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do List</title>
+</head>
+<body>
+    <script src="main.js" defer></script>
+    <div id="header"><h1>To-Do List</h1></div>
+    <div id="main-content">
+        <div id="projects-menu">
+            <h3>Projects:</h3>
+            <ul id="projects-menu-list">
+            </ul>
+            <button id="project-clear-button">Clear Empty Projects</button>
+        </div>
+        <div id="to-do-container">
+            <div id="to-do-form"> 
+                <form>
+                    <input type="text" placeholder="Title" id="title-input" required>   
+                    <input type="text" placeholder="Description" required id="description-input">
+                    <input type="text" placeholder="Project" required id="project-input">
+                    <select required id="priority-input">
+                        <option value="" disabled selected><b>Priority</b></option>
+                        <option value="0">Urgent</option>
+                        <option value="1">High</option>
+                        <option value="2">Medium</option>
+                        <option value="3">Low</option>
+                    </select>
+                    <input type="date" placeholder="Date" required id="dueDate">  
+                    <input type="submit" value="Add Task" id="submit">
+                </form>
+            </div>
+            <div id="to-do-display">
+               
+                
+            </div>
+        </div>
+    </div>
+    <div id="footer"><a href="https://github.com/joaobitu">Made By João</a></div>
+    
+</body>
+</html>
